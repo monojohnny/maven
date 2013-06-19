@@ -7,6 +7,7 @@ export artifactId=$1
 export groupId=com.monojohnny
 export version=1.0-SNAPSHOT
 export archetypeArtifactId=maven-archetype-quickstart
+export username=monojohnny
 
 mvn -B archetype:generate \
   -DarchetypeGroupId=org.apache.maven.archetypes \
@@ -26,4 +27,9 @@ git add pom.xml
 git add src
 git add .gitignore
 git commit -m "Initial Commit"
-cd ..
+
+# Not working (the JSON needs a surrounding single quote, but then I am unable to expand the $variable....)
+#export json={"name":\"$artifactId\"}
+#curl -u $username  https://api.github.com/user/repos -d $json
+#git remote add origin git@github.com:$username/$artifactId".git"
+#git push origin master
